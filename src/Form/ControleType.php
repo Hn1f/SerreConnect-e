@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ControleType extends AbstractType
@@ -18,9 +19,9 @@ class ControleType extends AbstractType
             ->add('mode', CheckboxType::class, ['label' => 'Mode automatique : '])
             ->add('tempConsigne', TextType::class, ['label' => 'Température de consigne : '] )
             ->add('SoilHumidity', TextType::class, ['label' => 'Humidité minimum : '])
-            ->add('arrosage', CheckboxType::class, ['label' => 'Arroser : '])
-            ->add('ventilation', CheckboxType::class, ['label' => 'Ventiler : '])
-            ->add('Enregistrez', SubmitType::class)
+            ->add('arrosage', ButtonType::class, ['label' => 'Arrosage '])
+            ->add('ventilation', ButtonType::class, ['label' => 'Ventilation '])
+            ->add('Enregistrer', SubmitType::class)
         ;
     }
 

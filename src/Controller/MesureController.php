@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Controle;
 use App\Form\ControleType;
+use ContainerTl32efX\getUserRepositoryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,6 +50,11 @@ class MesureController extends AbstractController
                 ],
             ],
         ]);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            dump($data);
+        }
 
         return $this->render('mesure/index.html.twig', [
                 'chart'=> $chart,

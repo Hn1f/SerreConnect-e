@@ -14,23 +14,15 @@
                 <span class="slider round"></span>
             </label>
         </div>
-        <div class="controle-element">
+        <div class="controle-element" id="temperature">
             {{ form_row(form.tempConsigne) }}
         </div>
-        <div class="controle-element">
+        <div class="controle-element" id="humidity">
                 {{ form_row(form.SoilHumidity) }}
         </div>
-        <div class="controle-element">
-            {{ form_label(form.arrosage) }}
-            <label class="switch">
-                {{ form_widget(form.arrosage) }}
-            </label>
-        </div>
-        <div class="controle-element">
-            {{ form_label(form.ventilation) }}
-            <label class="switch"> 
-                {{ form_widget(form.ventilation) }}
-            </label>
+        <div class="controle-element" id="arrosage" >
+            {{ form_row(form.arrosage) }}
+            {{ form_row(form.ventilation) }}
         </div>
     {{ form_end(form) }}
     </div>

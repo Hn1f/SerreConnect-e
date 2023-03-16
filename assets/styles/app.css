@@ -90,16 +90,22 @@ body{
     margin: 2em 0 1em 0;
 }
 
-#loginSubmit{
-    width: 15em;
-    height: 5em;
+button{
     background-color: var(--texte-color);
     color: var(--body-bg-color);
     border-radius: 10px;
     border-style: none;
+    width: 7em;
+    height: 3em;
+}
+
+#loginSubmit{
+    width: 15em;
+    height: 5em;
     margin-top: 2em;
     font-size: 1.2em;
 }
+
 
 /* CSS */
 .button-1 {
