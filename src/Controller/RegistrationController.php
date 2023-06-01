@@ -17,12 +17,12 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
+        $user = new User();  //Définie un objet user appelé plus haut
+        $form = $this->createForm(RegistrationFormType::class, $user); //Crée un formulaire à partir du template de formulaire définie dans l'objet RegistrationFormTypee
+        $form->handleRequest($request); //On écoute si le formulaire à été renvoyé 
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+        if ($form->isSubmitted() && $form->isValid()) { //évalent du isset en Symfony on vérifie que le fomulaire à bien été poster et renseigné 
+            // On encode le mot de passe avant de le stocker en base de donnée
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -30,15 +30,14 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $entityManager->persist($user);
-            $entityManager->flush();
-            // do anything else you need here, like send an email
+            $entityManager->persist($user); //On prépare une entité user à crée en base de donnée 
+            $entityManager->flush(); //On vient renseigner les infos du fomulaire dans la bdd
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_login'); //Quand c'est fait on est redirigé vers la page de connexion
         }
 
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
+        return $this->render('registration/register.html.twig', [ //On vient traduire la vue twig  en HTML afin de l'afficher
+            'registrationForm' => $form->createView(), //On vient traduire l'objet  php form qui contient notre formulaire en twig afin de l'afficher 
         ]);
     }
 }

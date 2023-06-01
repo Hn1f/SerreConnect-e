@@ -7,10 +7,6 @@ const humidity = document.getElementById('humidity');
 
 
 document.onload =  function() {
-  arrosage.style.display = "none";
-  temperature.style.display = "none";
-  humidity.style.display = "none";
-  temperature.style.display = "none";
   if (element.checked == true){
     temperature.style.display = "flex";
     humidity.style.display = "flex";
